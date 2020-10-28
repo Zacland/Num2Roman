@@ -1,6 +1,6 @@
 # Roman Numeral > 4000 : https://www.math-salamanders.com/roman-numerals-list.html
 
-def  intToRoman(nombre):
+def  intToRoman(nombre, formatOutput = False):
     val = [
         1000000, 900000, 500000, 400000,
         100000, 90000, 50000, 40000,
@@ -26,6 +26,11 @@ def  intToRoman(nombre):
             romanNum += syb[i]
             nombre -= val[i]
         i += 1
+    if formatOutput:
+        slashCount = romanNum.count('/')
+        romanNum = romanNum.replace('/', '')
+        romanNum = '_' * slashCount + '\n' + romanNum
+
     return romanNum
 
 def main():
@@ -46,6 +51,8 @@ def main():
     print(f"241365 = {intToRoman(241365)}")     # CCXLMCCCLXV
                                                 # _______
     print(f"845620 = {intToRoman(845620)}")     # DCCCXLVDCXX
+                                                # _______
+    print(intToRoman(845620, True))             # DCCCXLVDCXX
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
